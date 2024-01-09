@@ -28,6 +28,7 @@ pipeline {
                 }
             }
         }
+
      stage("Build") {
             steps {
                 bat './gradlew build'
@@ -47,6 +48,7 @@ pipeline {
 
 
 }
+/*
     post {
         always {
         echo "End of Pipeline process"
@@ -62,5 +64,5 @@ pipeline {
         notifyEvents message: 'Bonjour! : <b>Déploiement éffectué !</b> ! ', token: 'ARnvfcd-eVZwHhVHkkJlT0nTqJm8zt85'
       }
     }
-
+*/
 }
