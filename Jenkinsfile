@@ -65,6 +65,7 @@ pipeline {
 
             echo "Deployment succeedeed"
 
+
             mail(subject: 'Deployment succeeded', body: 'Deployment succeeded ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
            // notifyEvents message: 'Bonjour! : <b>Déploiement éffectué !</b> ! ', token: 'cjpgjjieyzo2mc42ejwfcmvh9etkty5a'
         }
