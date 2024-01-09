@@ -50,15 +50,15 @@ pipeline {
     post {
         always {
         echo "End of Pipeline process"
-        mail(subject: 'End of Process Pipeline : Result incoming ...', body: 'End of Process Pipeline : Result incoming ...', from: 'jk_taibi@esi.dz', to: 'jk_taibi@esi.dz')
+        mail(subject: 'End of Process Pipeline : Result incoming ...', body: 'End of Process Pipeline : Result incoming ...', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
       }
       failure {
         echo "Deployment failed"
-        mail(subject: 'Deployment failed', body: 'Deployment failed ', from: 'jk_taibi@esi.dz', to: 'jk_taibi@esi.dz')
+        mail(subject: 'Deployment failed', body: 'Deployment failed ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
       }
       success {
         echo "Deployment succeeded"
-        mail(subject: 'Deployment succeeded', body: 'Deployment succeeded ', from: 'jk_taibi@esi.dz', to: 'jk_taibi@esi.dz')
+        mail(subject: 'Deployment succeeded', body: 'Deployment succeeded ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
         notifyEvents message: 'Bonjour! : <b>Déploiement éffectué !</b> ! ', token: 'ARnvfcd-eVZwHhVHkkJlT0nTqJm8zt85'
       }
     }
