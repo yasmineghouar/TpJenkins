@@ -62,7 +62,7 @@ pipeline {
 
             }
 
-}
+
 
     post {
         success {
@@ -71,6 +71,7 @@ pipeline {
                notifyEvents message: 'Bonjour! : <b>Déploiement éffectué !</b> ! ', token: 'cjpgjjieyzo2mc42ejwfcmvh9etkty5a'
              }
       failure {
+
         echo "Deployment failed"
 
       mail(subject: 'Deployment failed', body: 'Deployment failed ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
@@ -79,4 +80,4 @@ pipeline {
 
     }
 
-
+}
