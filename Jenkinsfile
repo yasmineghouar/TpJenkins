@@ -72,7 +72,7 @@ pipeline {
              }
       failure {
 
-        echo "Deployment failed"
+        echo "Deployment failedd"
 
       mail(subject: 'Deployment failed', body: 'Deployment failed ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
       notifyEvents message : 'Deployment successfully', token: 'cjpgjjieyzo2mc42ejwfcmvh9etkty5a'
