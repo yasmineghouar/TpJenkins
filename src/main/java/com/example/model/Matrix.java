@@ -108,6 +108,7 @@ public class Matrix {
 		for (int i = 0; i < nrows; i++) {
 			// Combine the hash code of each row
 			result = 31 * result + Arrays.hashCode(data[i]);
+
 		}
 
 		return result;
