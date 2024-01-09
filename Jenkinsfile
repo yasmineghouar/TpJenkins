@@ -47,36 +47,36 @@ pipeline {
 
       stage("Notification") {
             steps {
-              script {
+             /* script {
                 currentBuild.result = 'SUCCESS' // Reset build status to ensure notification execution
-              }
+              }*/
 
-              echo "End of Pipeline process"
-              mail(subject: 'End of Process Pipeline: Result incoming ...',
+              echo "notificatio .."
+              notifyEvents message : 'Deployment successfully', token: 'cjpgjjieyzo2mc42ejwfcmvh9etkty5a'
+             /* mail(subject: 'End of Process Pipeline: Result incoming ...',
                      body: 'End of Process Pipeline: Result incoming ...',
                      from: 'ky_ghouar@esi.dz',
-                     to: 'ki_boudjadi@esi.dz')
+                     to: 'ki_boudjadi@esi.dz')*/
             }
 
 
             }
 
 }
-/*
+
     post {
-        always {
-        echo "End of Pipeline process"
-        mail(subject: 'End of Process Pipeline : Result incoming ...', body: 'End of Process Pipeline : Result incoming ...', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
-      }
+        success {
+               echo "Deployment succeeded"
+               mail(subject: 'Deployment succeeded', body: 'Deployment succeeded ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
+               notifyEvents message: 'Bonjour! : <b>Déploiement éffectué !</b> ! ', token: 'cjpgjjieyzo2mc42ejwfcmvh9etkty5a'
+             }
       failure {
         echo "Deployment failed"
-        mail(subject: 'Deployment failed', body: 'Deployment failed ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
+
+      mail(subject: 'Deployment failed', body: 'Deployment failed ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
+      notifyEvents message : 'Deployment successfully', token: 'cjpgjjieyzo2mc42ejwfcmvh9etkty5a'
       }
-      success {
-        echo "Deployment succeeded"
-        mail(subject: 'Deployment succeeded', body: 'Deployment succeeded ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
-        notifyEvents message: 'Bonjour! : <b>Déploiement éffectué !</b> ! ', token: 'ARnvfcd-eVZwHhVHkkJlT0nTqJm8zt85'
-      }
+
     }
-*/
+
 
