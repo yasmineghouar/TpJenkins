@@ -13,7 +13,7 @@ pipeline {
 
     stage('Code analysis') {
       steps{
-       withSonarQubeEnv("sonar") { // Will pick the global server connection you have configured
+       withSonarQubeEnv("sonar") {
          bat './gradlew sonarqube' }
       }
 
@@ -23,11 +23,13 @@ pipeline {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                     // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
-                    // true = set pipeline to UNSTABLE, false = don't
+                    // true ie set pipeline to UNSTABLE, false = don't
                     waitForQualityGate abortPipeline: true
+
                 }
             }
         }
+
 
      stage("Build") {
             steps {
@@ -40,6 +42,24 @@ pipeline {
      stage("Deploy") {
             steps {
                 bat './gradlew publish'
+            }
+        }
+
+     stage("Notification") {
+            steps {
+               always {
+                       echo "End of Pipeline process"
+                       mail(subject: 'End of Process Pipeline : Result incoming ...', body: 'End of Process Pipeline : Result incoming ...', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
+                     }
+                     failure {
+                       echo "Deployment failed"
+                       mail(subject: 'Deployment failed', body: 'Deployment failed ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
+                     }
+                     success {
+                       echo "Deployment succeeded"
+                       mail(subject: 'Deployment succeeded', body: 'Deployment succeeded ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
+                       /*notifyEvents message: 'Bonjour! : <b>Déploiement éffectué !</b> ! ', token: 'ARnvfcd-eVZwHhVHkkJlT0nTqJm8zt85'*/
+                     }
 
             }
         }
