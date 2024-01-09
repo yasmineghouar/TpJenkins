@@ -1,5 +1,7 @@
 package com.example.model;
 
+import java.util.Arrays;
+
 public class Matrix {
 
 	private int nrows;
@@ -98,6 +100,17 @@ public class Matrix {
 
 	return  true;
 
+	}
+	@Override
+	public int hashCode() {
+		int result = 17; // Choose a prime number as the initial value
+
+		for (int i = 0; i < nrows; i++) {
+			// Combine the hash code of each row
+			result = 31 * result + Arrays.hashCode(data[i]);
+		}
+
+		return result;
 	}
 
 }
