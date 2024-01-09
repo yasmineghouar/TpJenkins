@@ -124,9 +124,6 @@ public class MatrixMathematics {
 			return null; // Or handle the case where determinant is zero appropriately
 		}
 	}
-
-
-
 	public  void test() {
 
 	}
