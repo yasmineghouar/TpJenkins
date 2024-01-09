@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage("test"){
       steps{
-      bat 'gradlew test' //lancement des tests unitaires
+      bat './gradlew test' //lancement des tests unitaires
       junit 'build/test-results/test/*.xml' //
       cucumber buildStatus: 'UNSTABLE',
       reportTitle: 'report TP',
@@ -11,15 +11,15 @@ pipeline {
       }
     }
 
-    stage('SonarQube analysis') {
+    stage('Code analysis') {
       steps{
        withSonarQubeEnv("sonar") { // Will pick the global server connection you have configured
-         bat 'gradlew sonarqube' }
+         bat './gradlew sonarqube' }
       }
 
     }
 
-    stage("Quality Gate") {
+    stage("Code Quality") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                     // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
@@ -30,15 +30,15 @@ pipeline {
         }
      stage("Build") {
             steps {
-                bat 'gradlew build'
-                bat 'gradlew javadoc'
+                bat './gradlew build'
+                bat './gradlew javadoc'
                 archiveArtifacts 'build/libs/*.jar'
                 archiveArtifacts 'build/docs/'
             }
         }
-     stage("deploy") {
+     stage("Deploy") {
             steps {
-                bat 'gradlew publish'
+                bat './gradlew publish'
 
             }
         }
