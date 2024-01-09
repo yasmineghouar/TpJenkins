@@ -118,6 +118,7 @@ public class MatrixMathematics {
 		double det = determinant(matrix);
 
 		if (det != 0) {
+
 			Matrix transposeCofactor = transpose(cofactor(matrix));
 			return transposeCofactor.multiplyByConstant(1.0 / det);
 		} else {
