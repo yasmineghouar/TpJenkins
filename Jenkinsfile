@@ -73,6 +73,8 @@ pipeline {
             echo "Deployment failed"
             mail(subject: 'Deployment failed', body: 'Deployment failed ', from: 'ky_ghouar@esi.dz', to: 'ki_boudjadi@esi.dz')
             notifyEvents message: 'Deployment failed', token: 'cjpgjjieyzo2mc42ejwfcmvh9etkty5a'
+
+
         }
     }
 }
