@@ -5,9 +5,10 @@ pipeline {
             steps {
                 bat './gradlew test' //lancement des tests unitaires
                 junit 'build/test-results/test/*.xml' //
-                cucumber buildStatus: 'UNSTABLE',
-                        reportTitle: 'report TP',
-                        fileIncludePattern: 'target/report.json'
+                 cucumber buildStatus: 'UNSTABLE',
+                                reportTitle: 'My report',
+                                fileIncludePattern: 'target/*.json',
+                                trendsLimit: 10
             }
         }
 
